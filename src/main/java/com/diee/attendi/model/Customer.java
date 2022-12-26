@@ -1,5 +1,6 @@
 package com.diee.attendi.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Customer {
     @Column(name = "created_on", columnDefinition = "timestamp default current_timestamp")
     private LocalDateTime createdOn;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
     private List<ApiKey> apiKeys;
 
     private Boolean active;
