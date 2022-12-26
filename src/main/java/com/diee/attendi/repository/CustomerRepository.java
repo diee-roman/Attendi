@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    Optional<Customer> findByNameEqualsIgnoreCase(String name);
+    Optional<Customer> findByNameEqualsIgnoreCaseAndPartner(String name, Partner partner);
 
     List<Customer> findCustomerByPartner(Partner partner);
 }

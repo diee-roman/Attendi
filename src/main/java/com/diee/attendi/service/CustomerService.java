@@ -31,10 +31,11 @@ public class CustomerService {
     }
 
     public CustomerDTO createCustomer(CreateCustomerDTO customer, Long partnerId) {
-        if (this.customerRepository.findByNameEqualsIgnoreCase(customer.name()).isPresent()) {
+        var partner = this.partnerExists(partnerId);
+
+        if (this.customerRepository.findByNameEqualsIgnoreCaseAndPartner(customer.name(), partner).isPresent()) {
             throw new EntityExistsException("The customer you are trying to create already exists.");
         }
-        var partner = this.partnerExists(partnerId);
         var generatedApiKey = this.apiKeyService.generateRandomKey();
         var customerToSave = new Customer(customer.name(), true, partner);
         var apiKey = new ApiKey(generatedApiKey, true, customerToSave);
