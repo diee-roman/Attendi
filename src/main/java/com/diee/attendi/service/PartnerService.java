@@ -23,7 +23,7 @@ public class PartnerService {
     }
 
     private PartnerDTO toDto(Partner partner) {
-        return new PartnerDTO(partner.getName(), partner.getEmail(), partner.getCreatedOn());
+        return new PartnerDTO(partner.getId(), partner.getName(), partner.getEmail(), partner.getCreatedOn());
     }
 
     public PartnerDTO createPartner(PartnerDTO partner) {
@@ -32,6 +32,6 @@ public class PartnerService {
         }
 
         var savedPartner = this.partnerRepository.saveAndFlush(new Partner(partner.name(), partner.email(), true));
-        return new PartnerDTO(savedPartner.getName(), savedPartner.getEmail(), savedPartner.getCreatedOn());
+        return new PartnerDTO(savedPartner.getId(), savedPartner.getName(), savedPartner.getEmail(), savedPartner.getCreatedOn());
     }
 }
