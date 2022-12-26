@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 public class Partner {
     @Id
-    @SequenceGenerator(name="partner_id_seq", sequenceName="partner_id_seq", allocationSize=1)
+    @SequenceGenerator(name="partner_id_seq", sequenceName="partner_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="partner_id_seq")
     private Long id;
     private String name;

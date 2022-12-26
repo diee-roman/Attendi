@@ -5,16 +5,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "api_key")
+@Data
 public class ApiKey {
 
     @Id
@@ -27,4 +30,16 @@ public class ApiKey {
     private LocalDateTime createdOn;
     private String key;
     private Boolean active;
+
+    @ManyToOne
+    private Customer customer;
+
+    public ApiKey() {
+    }
+
+    public ApiKey(String key, Boolean active, Customer customer) {
+        this.key = key;
+        this.active = active;
+        this.customer = customer;
+    }
 }
