@@ -26,7 +26,7 @@ CREATE TABLE api_key
     id SERIAL NOT NULL,
     customer_id integer NOT NULL,
     created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    key VARCHAR(32) NOT NULL,
+    key VARCHAR(64) NOT NULL,
     active BOOLEAN NOT NULL,
     PRIMARY KEY(id),
     CONSTRAINT fk_customer
