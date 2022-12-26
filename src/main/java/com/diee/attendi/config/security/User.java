@@ -1,4 +1,4 @@
-package com.diee.attendi.config;
+package com.diee.attendi.config.security;
 
 import lombok.Data;
 

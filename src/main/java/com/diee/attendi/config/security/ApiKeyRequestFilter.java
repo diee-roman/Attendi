@@ -1,13 +1,10 @@
-package com.diee.attendi.config;
+package com.diee.attendi.config.security;
 
-import com.diee.attendi.model.ApiKey;
-import com.diee.attendi.repository.ApiKeyRepository;
 import com.diee.attendi.service.ApiKeyService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
