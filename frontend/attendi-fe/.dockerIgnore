@@ -1,0 +1,7 @@
+.editorconfig
+/.angular
+/dist
+/node_modules
+/docs
+.gitignore
+*.zip
