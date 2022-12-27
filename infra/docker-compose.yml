@@ -1,6 +1,7 @@
 version: '3'
 services:
   database:
+    container_name: database
     image: postgres:latest
     restart: always
     environment:
@@ -12,10 +13,12 @@ services:
         max-file: "3"
     ports:
       - "5432:5432"
+    networks:
+    - database
     volumes:
       - ./db-init/db.sql:/docker-entrypoint-initdb.d/db.sql
   api:
-    image: spring-boot-image
+    container_name: api
     build:
       context: ../
       dockerfile: Dockerfile
@@ -27,3 +30,22 @@ services:
       spring_datasource_url: jdbc:postgresql://database:5432/postgres
       spring_datasource_username: postgres
       spring_datasource_password: postgres
+    networks:
+      - api
+      - database
+  fe:
+    container_name: fe
+    build:
+      context: ../frontend/attendi-fe
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - fe
+      - api
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+networks:
+  fe:
+  api:
+  database:
