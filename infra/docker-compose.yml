@@ -38,6 +38,8 @@ services:
     build:
       context: ../frontend/attendi-fe
       dockerfile: Dockerfile
+    depends_on:
+      - api
     ports:
       - "80:80"
     networks:
