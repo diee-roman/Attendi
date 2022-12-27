@@ -7,7 +7,6 @@ COPY ./package.json /app/package.json
 COPY ./tsconfig.app.json /app/tsconfig.app.json
 COPY ./tsconfig.json /app/tsconfig.json
 COPY ./tsconfig.spec.json /app/tsconfig.spec.json
-COPY dist /app/dist
 RUN npm install
 RUN npm run build --prod
 
