@@ -10,5 +10,6 @@ RUN mvn verify clean --fail-never
 COPY . /app
 RUN mvn clean install -DskipTests
 EXPOSE 8080
-ADD ./target/Attendi-0.0.1-SNAPSHOT.jar /developments/
+RUN mkdir /developments
+RUN mv /app/target/Attendi-0.0.1-SNAPSHOT.jar /developments/
 ENTRYPOINT ["java","-jar","/developments/Attendi-0.0.1-SNAPSHOT.jar"]
